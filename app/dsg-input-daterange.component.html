@@ -1,0 +1,24 @@
+<mat-form-field *ngIf="dateRangeTypes" floatLabel="always">
+  <mat-select placeholder="Date Range" [formControl]='dateRangeType' (selectionChange)="setDatePickers()">
+    <mat-option *ngFor="let type of dateRangeTypes" [value]="type.value">
+      {{type.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br/>
+
+<span *ngIf="displayDatePickers()" class="wholePageStyle">
+  <mat-form-field style="max-width: 120px;" class="oneMargin">
+    <input matInput [max]="dateToForm.value" #dateFromInput [matDatepicker]="pickerFrom" placeholder="From" [formControl]="dateFromForm" />
+    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFrom (closed)="pickerTo.open()"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field style="max-width: 120px;">
+    <input matInput [min]="dateFromForm.value"  #dateToInput [matDatepicker]="pickerTo" placeholder="To" [formControl]="dateToForm" />
+    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+  </mat-form-field>
+</span>
+
+
