@@ -5,6 +5,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -46,7 +47,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatepickerMomentExample} from './app/datepicker-moment-example';
-
+import {DsgInputDaterangeComponent} from './app/dsg-input-daterange.component'
 @NgModule({
   exports: [
     CdkTableModule,
@@ -69,7 +70,6 @@ import {DatepickerMomentExample} from './app/datepicker-moment-example';
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -86,6 +86,7 @@ import {DatepickerMomentExample} from './app/datepicker-moment-example';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MatMomentDateModule
   ]
 })
 export class DemoMaterialModule {}
@@ -97,11 +98,10 @@ export class DemoMaterialModule {}
     FormsModule,
     HttpClientModule,
     DemoMaterialModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
   ],
   entryComponents: [DatepickerMomentExample],
-  declarations: [DatepickerMomentExample],
+  declarations: [DatepickerMomentExample, DsgInputDaterangeComponent],
   bootstrap: [DatepickerMomentExample],
   providers: []
 })
