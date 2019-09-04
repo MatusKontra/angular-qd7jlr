@@ -11,13 +11,26 @@ import {
   OnDestroy
 } from '@angular/core';
 import { FormControl, NgControl, ControlValueAccessor } from '@angular/forms';
-import { DateRangeTypesEnum } from '../../../BusinessModule/enums/date-range-types-enum';
+
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE
 } from '@angular/material/core';
+
+export enum DateRangeTypesEnum {
+   Unknown = 0,
+   Today = 1,
+   TodayAM = 2,
+   TodayPM = 4,
+   Tomorrow = 8,
+   ThisWeek = 16,
+   Yesterday = 32,
+   LastWeek = 64,
+   CustomPeriod = 128,
+}
+
 
 export interface DateRangeModel {
   from: Date;

@@ -4,7 +4,10 @@
   <mat-datepicker #dp></mat-datepicker>
 </mat-form-field>
 
-
+    <dsg-input-daterange fxFlex
+                         [formControl]="dateRangeControl"
+                         [dateRangeTypes]="supportedDateRangeTypes"
+                         [dateRangeToDisplayPickers]="customRangeEnumVal"></dsg-input-daterange>
 <!-- Copyright 2018 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license -->

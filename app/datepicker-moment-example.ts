@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-
+import {DateRangeTypesEnum} from './dsg-input-daterange.component'
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -12,6 +12,8 @@ import * as _moment from 'moment';
 import {default as _rollupMoment} from 'moment';
 
 const moment = _rollupMoment || _moment;
+
+
 
 /** @title Datepicker that uses Moment.js dates */
 @Component({
@@ -29,6 +31,19 @@ const moment = _rollupMoment || _moment;
 export class DatepickerMomentExample {
   // Datepicker takes `Moment` objects instead of `Date` objects.
   date = new FormControl(moment([2017, 0, 1]));
+
+    supportedDateRangeTypes = Object.keys(DateRangeTypesEnum)
+    .filter(
+      key =>
+        typeof DateRangeTypesEnum[key] === 'number' &&
+        DateRangeTypesEnum[key] != 0
+    )
+    .map(y => ({
+      value: DateRangeTypesEnum[y],
+      viewValue: y.replace(/([A-Z]+)/g, ' $1').trim()
+    }));
+
+  customRangeEnumVal = DateRangeTypesEnum.CustomPeriod;
 }
 
 
